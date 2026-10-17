@@ -1,0 +1,20 @@
+{
+  "players": [
+    {
+      "id": "p1",
+      "nickname": "Совёнок",
+      "discordId": null,
+      "lastSeen": "2026-10-15T12:00:00.000Z",
+      "server": "doki",
+      "banned": false
+    },
+    {
+      "id": "p2",
+      "nickname": "Лето",
+      "discordId": null,
+      "lastSeen": "2026-10-14T18:30:00.000Z",
+      "server": "fukuro",
+      "banned": false
+    }
+  ]
+}

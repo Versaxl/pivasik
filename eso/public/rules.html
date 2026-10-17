@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Правила — Совёнок</title>
+<link rel="icon" href="/assets/img/favicon.ico">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a href="/">Серверы</a>
+    <a href="/rules" class="active">Правила</a>
+    <a href="/news">Новости</a>
+    <button id="themeBtn">🌙 Тема</button>
+  </nav>
+
+  <div class="page">
+    <h1>Правила</h1>
+    <div class="content">
+      <ol id="rulesList"><li>Загрузка…</li></ol>
+    </div>
+  </div>
+
+  <footer>Фан-проект. Все права принадлежат авторам «Бесконечного лета».</footer>
+</div>
+<script>
+  const t = localStorage.getItem('theme') || 'dark';
+  document.documentElement.dataset.theme = t;
+  document.getElementById('themeBtn').onclick = () => {
+    const cur = document.documentElement.dataset.theme;
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  };
+
+  fetch('/api/rules')
+    .then(r => r.json())
+    .then(rules => {
+      document.getElementById('rulesList').innerHTML =
+        rules.map(r => `<li>${r}</li>`).join('');
+    });
+</script>
+</body>
+</html>

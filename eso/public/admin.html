@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Админ-панель — Совёнок</title>
+<link rel="icon" href="/assets/img/favicon.ico">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .login-box{max-width:400px;margin:80px auto;background:var(--card);
+    border:1px solid var(--border);border-radius:18px;padding:32px;backdrop-filter:blur(8px)}
+  .login-box h1{font-size:1.4rem;margin-bottom:20px;text-align:center}
+  .login-box input{width:100%;padding:12px 14px;border-radius:10px;
+    border:1px solid var(--border);background:rgba(0,0,0,.2);color:var(--text);
+    font-size:1rem;margin-bottom:12px}
+  .login-box button{width:100%;padding:12px;border-radius:10px;border:none;
+    background:var(--accent);color:#0f1a22;font-weight:700;cursor:pointer;font-size:1rem}
+  .login-box .err{color:#ff7a7a;font-size:.85rem;margin-top:8px;text-align:center;min-height:18px}
+
+  .admin-header{display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:24px;flex-wrap:wrap;gap:12px}
+  .admin-header h1{font-size:1.6rem}
+  .admin-header button{padding:8px 16px;border-radius:100px;border:1px solid var(--border);
+    background:var(--card);color:var(--text);cursor:pointer;font:inherit}
+
+  .players-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .player-card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:18px;backdrop-filter:blur(8px)}
+  .player-card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .player-card .name{font-weight:700;font-size:1.1rem}
+  .player-card .info{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+  .player-card .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .player-card textarea{width:100%;min-height:60px;padding:8px;border-radius:8px;
+    border:1px solid var(--border);background:rgba(0,0,0,.2);color:var(--text);
+    font:inherit;font-size:.9rem;resize:vertical;margin-bottom:8px}
+  .player-card button{padding:8px 14px;border-radius:8px;border:none;cursor:pointer;
+    font:inherit;font-size:.85rem;font-weight:600}
+  .btn-send{background:var(--accent);color:#0f1a22}
+  .btn-ban{background:rgba(255,100,100,.2);color:#ff8a8a}
+  .btn-unban{background:rgba(100,255,100,.15);color:#7fe07f}
+  .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:#42555f;margin-right:6px}
+  .status-dot.on{background:var(--online);box-shadow:0 0 6px var(--online)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Экран входа -->
+  <div id="loginScreen">
+    <div class="login-box">
+      <h1>Админ-панель</h1>
+      <input id="passwordInput" type="password" placeholder="Пароль" autofocus>
+      <button id="loginBtn">Войти</button>
+      <div class="err" id="loginErr"></div>
+    </div>
+  </div>
+
+  <!-- Панель -->
+  <div id="panelScreen" style="display:none">
+    <div class="admin-header">
+      <h1>Игроки</h1>
+      <button id="logoutBtn">Выйти</button>
+    </div>
+    <div class="players-list" id="playersList">Загрузка…</div>
+  </div>
+
+</div>
+<script src="/js/admin.js"></script>
+</body>
+</html>
